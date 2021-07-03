@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : watch.go
-#   Last Modified : 2021-07-02 17:30
+#   Last Modified : 2021-07-03 08:12
 #   Describe      :
 #
 # ====================================================*/
@@ -13,13 +13,13 @@ package watch
 
 import (
 	"fmt"
-	"hotbuild/config"
-	"hotbuild/run"
-	"hotbuild/tree"
 	"log"
 	"os"
 
 	"github.com/fsnotify/fsnotify"
+	"github.com/wandercn/hotbuild/config"
+	"github.com/wandercn/hotbuild/run"
+	"github.com/wandercn/hotbuild/tree"
 )
 
 func Start() {

@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : tree.go
-#   Last Modified : 2021-07-02 15:31
+#   Last Modified : 2021-07-03 08:12
 #   Describe      :
 #
 # ====================================================*/
@@ -13,9 +13,10 @@ package tree
 
 import (
 	"fmt"
-	"hotbuild/strslice"
 	"os"
 	"path"
+
+	"github.com/wandercn/hotbuild/strslice"
 )
 
 func TreeDirs(dir string, dirList *[]string, excludeDir []string) error {

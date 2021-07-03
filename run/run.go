@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : run.go
-#   Last Modified : 2021-07-02 15:31
+#   Last Modified : 2021-07-03 08:12
 #   Describe      :
 #
 # ====================================================*/
@@ -13,10 +13,11 @@ package run
 
 import (
 	"fmt"
-	"hotbuild/config"
 	"os"
 	"os/exec"
 	"strings"
+
+	"github.com/wandercn/hotbuild/config"
 )
 
 /* 编译代码 */

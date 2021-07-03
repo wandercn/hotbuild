@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : main.go
-#   Last Modified : 2021-07-02 17:05
+#   Last Modified : 2021-07-03 08:08
 #   Describe      :
 #
 # ====================================================*/
@@ -12,7 +12,8 @@ package main
 
 import (
 	"fmt"
-	"hotbuild/watch"
+
+	"github.com/wandercn/hotbuild/watch"
 )
 
 func main() {

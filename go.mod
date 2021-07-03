@@ -1,4 +1,4 @@
-module hotbuild
+module github.com/wandercn/hotbuild
 
 go 1.16
 
