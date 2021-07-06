@@ -2,7 +2,7 @@
 
 A cross platform hot compilation tool
 
-By monitoring the modification of the project directory file, the recompilation and running are automatically triggered. Running directory and monitoring change directory can be different.
+By monitoring the modification of the project directory file, the recompilation and running are automatically triggered. Running directory and monitoring change directory can be different. Monitor the file modification in all recursive subdirectories under the project path.
 
 # install
 
