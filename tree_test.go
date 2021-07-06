@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"hotbuild/tree"
 	"testing"
+
+	"github.com/wandercn/hotbuild/tree"
 )
 
 func Test_Tree(t *testing.T) {
