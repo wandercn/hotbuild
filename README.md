@@ -6,7 +6,7 @@ By monitoring the modification of the project directory file, the recompilation 
 
 # install
 
-    go get -u github.com/wandercn/hotbuild
+    go get -u github.com/wandercn/hotbuild@latest 
 
 # run
 ```
