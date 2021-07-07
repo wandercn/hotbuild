@@ -4,11 +4,11 @@ A cross platform hot compilation tool
 
 By monitoring the modification of the project directory file, the recompilation and running are automatically triggered. Running directory and monitoring change directory can be different. Monitor the file modification in all recursive subdirectories under the project path.
 
-# install
+# Install
 
     go get -u github.com/wandercn/hotbuild@latest 
 
-# run
+# Run
 ```
 wander$ cd $your_project_dir/
 wander$ hotbuild
@@ -43,3 +43,38 @@ runcmd = "./tmp_bin"
 |excludedir | Exclude tracked folders    |排除跟踪的文件夹  |
 |projectdir | Project directory to track |需要跟踪的项目目录|
 |runcmd     | Run command                |运行命令          |
+
+# FAQ
+1. the "Too many open files" error of MacOSX
+   
+  ```
+# maxfiles is 256 too small.
+
+wander$ launchctl limit
+	cpu         unlimited      unlimited
+	filesize    unlimited      unlimited
+	data        unlimited      unlimited
+	stack       8388608        67104768
+	core        0              unlimited
+	rss         unlimited      unlimited
+	memlock     unlimited      unlimited
+	maxproc     2784           4176
+	maxfiles    256           10240
+
+# change maxfiles to 4096.
+
+wander$ sudo launchctl limit maxfiles 4096 unlimited
+wander$ launchctl limit
+	cpu         unlimited      unlimited
+	filesize    unlimited      unlimited
+	data        unlimited      unlimited
+	stack       8388608        67104768
+	core        0              unlimited
+	rss         unlimited      unlimited
+	memlock     unlimited      unlimited
+	maxproc     2784           4176
+	maxfiles    4096           10240
+
+  ```
+
+    
