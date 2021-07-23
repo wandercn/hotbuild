@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : watch.go
-#   Last Modified : 2021-07-23 11:09
+#   Last Modified : 2021-07-23 12:10
 #   Describe      :
 #
 # ====================================================*/
@@ -23,20 +23,36 @@ import (
 	"github.com/wandercn/hotbuild/tree"
 )
 
+var (
+	GreeBg    = string([]byte{27, 91, 57, 55, 59, 52, 50, 109})
+	redBg     = string([]byte{27, 91, 57, 55, 59, 52, 49, 109})
+	blueBg    = string([]byte{27, 91, 57, 55, 59, 52, 52, 109})
+	magentaBg = string([]byte{27, 91, 57, 55, 59, 52, 53, 109})
+	cyanBg    = string([]byte{27, 91, 57, 55, 59, 52, 54, 109})
+	Green     = string([]byte{27, 91, 51, 50, 109})
+	white     = string([]byte{27, 91, 51, 55, 109})
+	yellow    = string([]byte{27, 91, 51, 51, 109})
+	red       = string([]byte{27, 91, 51, 49, 109})
+	blue      = string([]byte{27, 91, 51, 52, 109})
+	magenta   = string([]byte{27, 91, 51, 53, 109})
+	cyan      = string([]byte{27, 91, 51, 54, 109})
+	Reset     = string([]byte{27, 91, 48, 109})
+)
+
 func Start() {
 	// 运行中的进程id
 	var currentPid int
 
 	hotBuild := func() {
 		var err error
-		fmt.Println(".............................. ( Start rebuilding ) .................................")
+		fmt.Println(".............................. ", GreeBg, "( Start rebuilding )", Reset, " .................................")
 		if err = run.BuildCode(); err != nil {
 			log.Printf("BuildCode failed: %v", err)
 			return
 		}
 		// 重新编译运行之前退出之前的进程
 		if currentPid > 0 {
-			fmt.Printf(".............................. < GracefulStop running on pid=%v > ................\n", currentPid)
+			fmt.Println(".............................. ", redBg, "< GracefulStop running on pid=", currentPid, " >", Reset, " ................")
 			proc, err := os.FindProcess(currentPid)
 			if err != nil {
 				log.Printf("find old proc failed: %v", err)
@@ -53,8 +69,8 @@ func Start() {
 				}
 			}
 		}
-		fmt.Println(".............................. [ Build successfully ] ...............................")
-		fmt.Println(".............................. { Start running } ....................................")
+		fmt.Println(".............................. ", magentaBg, "[ Build successfully ]", Reset, " ...............................")
+		fmt.Println(".............................. ", cyanBg, "{ Start running }", Reset, " ....................................")
 		if currentPid, err = run.Run(); err != nil {
 			log.Printf("Run Failed:%v", err)
 			return
@@ -136,7 +152,7 @@ func Start() {
 			return
 		}
 	}
-	log.Println("Hotbuild is running. Press Ctrl+C to stop")
+	fmt.Println(Green, "Hotbuild is running. Press Ctrl+C to stop", Reset)
 	signal.Notify(waited, os.Interrupt, os.Kill)
 	// ctrl + C 强制退出
 	<-waited
