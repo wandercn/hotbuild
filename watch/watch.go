@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : watch.go
-#   Last Modified : 2021-07-23 12:10
+#   Last Modified : 2021-07-23 16:03
 #   Describe      :
 #
 # ====================================================*/
@@ -153,7 +153,7 @@ func Start() {
 		}
 	}
 	fmt.Println(Green, "Hotbuild is running. Press Ctrl+C to stop", Reset)
-	signal.Notify(waited, os.Interrupt, os.Kill)
+	signal.Notify(waited, os.Kill)
 	// ctrl + C 强制退出
 	<-waited
 }
