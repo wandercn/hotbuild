@@ -30,3 +30,12 @@ cd build/
 zip -mr  $target.zip $target 
 cd ..
 
+# md5
+cd build/
+echo "" > md5checksum.txt
+for i in `ls *.zip`;
+do
+    md5 $i >> md5checksum.txt
+done;
+cd ..
+cat build/md5checksum.txt
