@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : watch.go
-#   Last Modified : 2021-07-23 16:03
+#   Last Modified : 2021-07-23 17:16
 #   Describe      :
 #
 # ====================================================*/
@@ -45,6 +45,7 @@ func Start() {
 
 	hotBuild := func() {
 		var err error
+		fmt.Println("")
 		fmt.Println(".............................. ", GreeBg, "( Start rebuilding )", Reset, " .................................")
 		if err = run.BuildCode(); err != nil {
 			log.Printf("BuildCode failed: %v", err)
@@ -75,6 +76,8 @@ func Start() {
 			log.Printf("Run Failed:%v", err)
 			return
 		}
+		fmt.Println(Green, "Hotbuild is running. Press Ctrl+C to stop", Reset)
+		fmt.Printf("\n")
 	}
 
 	hotBuild()
@@ -131,28 +134,28 @@ func Start() {
 	conf := config.New()
 	projectDir, err := conf.GetProjectDir()
 	if err != nil {
-		log.Printf("GetProjectDir failed: %v", err)
+		log.Printf("GetProjectDir failed: %v\n", err)
 		return
 	}
 	watchDirs := make([]string, 100)
 	excludeDirs, err := conf.GetExcludeDirs()
 	if err != nil {
-		log.Printf("GetExcludeDirs failed: %v", err)
+		log.Printf("GetExcludeDirs failed: %v\n", err)
 		return
 	}
 	err = tree.TreeDirs(projectDir, &watchDirs, excludeDirs)
 	if err != nil {
-		log.Fatalf("tree dirs failed: %v", err)
+		log.Fatalf("tree dirs failed: %v\n", err)
 		return
 	}
 	for _, d := range watchDirs {
 		err = watcher.Add(d)
 		if err != nil {
-			log.Fatalf("add watch dir: %s failed: %v", d, err)
+			log.Fatalf(redBg, "add watch dir: %s failed: %v\n", d, err, Reset)
 			return
 		}
 	}
-	fmt.Println(Green, "Hotbuild is running. Press Ctrl+C to stop", Reset)
+
 	signal.Notify(waited, os.Kill)
 	// ctrl + C 强制退出
 	<-waited
