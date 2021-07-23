@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : watch.go
-#   Last Modified : 2021-07-03 08:12
+#   Last Modified : 2021-07-23 11:09
 #   Describe      :
 #
 # ====================================================*/
@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/signal"
 
 	"github.com/fsnotify/fsnotify"
 	"github.com/wandercn/hotbuild/config"
@@ -67,7 +68,7 @@ func Start() {
 	}
 	defer watcher.Close()
 
-	waited := make(chan bool)
+	waited := make(chan os.Signal, 1)
 
 	go func() {
 		for {
@@ -135,5 +136,8 @@ func Start() {
 			return
 		}
 	}
+	log.Println("Hotbuild is running. Press Ctrl+C to stop")
+	signal.Notify(waited, os.Interrupt, os.Kill)
+	// ctrl + C 强制退出
 	<-waited
 }
