@@ -5,6 +5,7 @@ A cross platform hot compilation tool
 By monitoring the modification of the project directory file, the recompilation and running are automatically triggered. Running directory and monitoring change directory can be different. Monitor the file modification in all recursive subdirectories under the project path.
 
 ![hotbuild](logo.jpg "hotbuild")
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild?ref=badge_shield)
 
 # Install
 
@@ -78,3 +79,7 @@ wander$ launchctl limit
 	maxfiles    4096           10240
 
   ```
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild?ref=badge_large)
+
