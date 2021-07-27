@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-echo $lastTag > version.txt
+goVersion=$(go version | awk '{print $3'})
+echo $lastTag
+echo $goVersion
+# 更新版本号
+sed -ie "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/" version.go
+
+# 更新go版本
+sed -ie "s/const GoVersion = \"*.*.*\"/const GoVersion = \"$goVersion\"/" version.go
 # Linux amd64
 GO_ENABLED=0 GOOS=linux GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"

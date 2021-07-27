@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : main.go
-#   Last Modified : 2021-07-23 12:10
+#   Last Modified : 2021-07-27 15:54
 #   Describe      :
 #
 # ====================================================*/
@@ -22,6 +22,6 @@ func main() {
 | | | |/ _ \_   _| | __ )| | | |_ _| |   |  _ \
 | |_| | | | || |   |  _ \| | | || || |   | | | |
 |  _  | |_| || |   | |_) | |_| || || |___| |_| |
-|_| |_|\___/ |_|   |____/ \___/|___|_____|____/ `, Version, `built with Go`, goVersion, watch.Reset)
+|_| |_|\___/ |_|   |____/ \___/|___|_____|____/ `, Version, `built with Go`, GoVersion, watch.Reset)
 	watch.Start()
 }

@@ -78,5 +78,3 @@ wander$ launchctl limit
 	maxfiles    4096           10240
 
   ```
-
-    
