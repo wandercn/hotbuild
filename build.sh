@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-set -x
 lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 goVersion=$(go version | awk '{print $3'})
 versionFile=./version/version.go
 release=bin
 echo $lastTag
 echo $goVersion
+rm -f $release/*
 # 更新版本号
 sed -i '' "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/"  ${versionFile} 
 
