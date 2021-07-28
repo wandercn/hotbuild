@@ -1,5 +1,0 @@
-
-MD5 (hotbuild_v1.0.6_darwin_amd64.zip) = 1184b88c2270f23fd1abe60e9c9573c3
-MD5 (hotbuild_v1.0.6_linux_amd64.zip) = a441fb3ae3021f7f02fd2ccd40bde226
-MD5 (hotbuild_v1.0.6_linux_arm.zip) = 625292387f1639cd3b26c414a2631174
-MD5 (hotbuild_v1.0.6_windows_amd64.zip) = 65470380bdd286a55377d7f2993784c9
