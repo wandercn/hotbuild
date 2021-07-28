@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 goVersion=$(go version | awk '{print $3'})
-versionFile=version/version.go
+versionFile=./version/version.go
 release=bin
 echo $lastTag
 echo $goVersion
 # 更新版本号
-sed -ie "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/" -f $versionFile 
+sed -i '' "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/"  ${versionFile} 
 
 # 更新go版本
-sed -ie "s/const GoVersion = \"*.*.*\"/const GoVersion = \"$goVersion\"/" -f $versionFile 
+sed -i '' "s/const GoVersion = \"*.*.*\"/const GoVersion = \"$goVersion\"/"  ${versionFile} 
 # Linux amd64
 GO_ENABLED=0 GOOS=linux GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
@@ -21,6 +21,27 @@ cd ..
 GO_ENABLED=0 GOOS=linux GOARCH=arm
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
 GO_ENABLED=0 GOOS=linux GOARCH=arm go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
+cd $release/
+zip -mr  $target.zip $target 
+cd ..
+# Linux arm64
+GO_ENABLED=0 GOOS=linux GOARCH=arm64
+target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
+GO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
+cd $release/
+zip -mr  $target.zip $target 
+cd ..
+# Linux riscv
+GO_ENABLED=0 GOOS=linux GOARCH=riscv
+target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
+GO_ENABLED=0 GOOS=linux GOARCH=riscv go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
+cd $release/
+zip -mr  $target.zip $target 
+cd ..
+# Linux riscv64
+GO_ENABLED=0 GOOS=linux GOARCH=riscv64
+target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
+GO_ENABLED=0 GOOS=linux GOARCH=riscv64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/
 zip -mr  $target.zip $target 
 cd ..
