@@ -6,35 +6,35 @@ release=bin
 echo $lastTag
 echo $goVersion
 # 更新版本号
-sed -ie "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/" $versionFile 
+sed -ie "s/const Version = \"*.*.*\"/const Version = \"$lastTag\"/" -f $versionFile 
 
 # 更新go版本
-sed -ie "s/const GoVersion = \"*.*.*\"/const GoVersion = \"$goVersion\"/" $versionFile 
+sed -ie "s/const GoVersion = \"*.*.*\"/const GoVersion = \"$goVersion\"/" -f $versionFile 
 # Linux amd64
 GO_ENABLED=0 GOOS=linux GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
-GO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X 'main.Version=$lastTag'" -o ./$release/$target/ 
+GO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/ 
 zip -mr  $target.zip $target 
 cd ..
 # Linux arm
 GO_ENABLED=0 GOOS=linux GOARCH=arm
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
-GO_ENABLED=0 GOOS=linux GOARCH=arm go build -ldflags="-X 'main.Version=$lastTag'" -o ./$release/$target/ 
+GO_ENABLED=0 GOOS=linux GOARCH=arm go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/
 zip -mr  $target.zip $target 
 cd ..
 # macosx
 GO_ENABLED=0 GOOS=darwin GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
-GO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'main.Version=$lastTag'" -o ./$release/$target/ 
+GO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/
 zip -mr  $target.zip $target 
 cd ..
 # windows
 GO_ENABLED=0 GOOS=windows GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
-GO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-X 'main.Version=$lastTag'" -o ./$release/$target/ 
+GO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/
 zip -mr  $target.zip $target 
 cd ..
