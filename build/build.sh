@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
+/* ====================================================
+#   Copyright (C) 2021  All rights reserved.
+#
+#   Author        : wander
+#   Email         : wander@ffactory.org
+#   File Name     : build.sh
+#   Last Modified : 2021-07-28 10:54
+#   Describe      : 
+#
+# ====================================================*/
+
 lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 goVersion=$(go version | awk '{print $3'})
 echo $lastTag

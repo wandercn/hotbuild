@@ -4,7 +4,7 @@
 #   Author        : wander
 #   Email         : wander@email.cn
 #   File Name     : config.go
-#   Last Modified : 2021-07-02 13:52
+#   Last Modified : 2021-07-28 10:34
 #   Describe      :
 #
 # ====================================================*/
@@ -31,7 +31,7 @@ type buildConfig struct {
 }
 
 /* 初始化默认配置 */
-func init() {
+func InitConf() error {
 	configFile := ConfFileName + ".toml"
 	_, err := os.Lstat(configFile)
 	if err != nil {
@@ -39,8 +39,7 @@ func init() {
 			log.Println("create config file:", ConfFileName+".toml")
 		} else {
 			log.Printf("Lstat failed: %v", err)
-			return
-
+			return fmt.Errorf("Lstat failed: %v", err)
 		}
 	}
 
@@ -52,11 +51,12 @@ func init() {
 	base.Set("runCmd", "./tmp_bin")
 	pwd, err := os.Getwd()
 	if err != nil {
-		panic(err)
+		return fmt.Errorf("Getwd faied: %v", err)
 	}
 	base.Set("projectDir", pwd)
 	base.Set("excludeDir", []string{".git", "tmp", "docs", "vendor"})
 	base.SafeWriteConfig()
+	return nil
 
 }
 
@@ -68,7 +68,7 @@ func (b *buildConfig) readConf() (*buildConfig, error) {
 	b.AddConfigPath(".")
 	err = b.ReadInConfig()
 	if err != nil {
-		log.Fatalf("ReadConfig failed: %v", err)
+		log.Fatalf("ReadConfig failed: %v\nyou need run command \"hotbuild initconf\" to initialize the configuration first!", err)
 		return nil, fmt.Errorf("ReadConfig failed: %v", err)
 	}
 	return b, nil
