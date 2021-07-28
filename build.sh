@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 lastTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 goVersion=$(go version | awk '{print $3'})
 versionFile=./version/version.go
@@ -28,13 +29,6 @@ cd ..
 GO_ENABLED=0 GOOS=linux GOARCH=arm64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
 GO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
-cd $release/
-zip -mr  $target.zip $target 
-cd ..
-# Linux riscv
-GO_ENABLED=0 GOOS=linux GOARCH=riscv
-target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
-GO_ENABLED=0 GOOS=linux GOARCH=riscv go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/ 
 cd $release/
 zip -mr  $target.zip $target 
 cd ..
