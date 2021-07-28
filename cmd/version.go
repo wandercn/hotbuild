@@ -4,10 +4,11 @@
 #   Author        : wander
 #   Email         : wander@ffactory.org
 #   File Name     : version.go
-#   Last Modified : 2021-07-28 10:54
+#   Last Modified : 2021-07-28 11:09
 #   Describe      :
 #
 # ====================================================*/
+package cmd
 
 import (
 	"fmt"

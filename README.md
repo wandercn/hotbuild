@@ -11,10 +11,17 @@ By monitoring the modification of the project directory file, the recompilation 
 
     go get -u github.com/wandercn/hotbuild@latest 
 
+# Initialize
+```
+wander$ cd $your_project_dir/
+wander$ hotbuild initconf
+2021/07/28 11:10:03 create config file: .hotbuild.toml
+```
+
 # Run
 ```
 wander$ cd $your_project_dir/
-wander$ hotbuild
+wander$ hotbuild run
  _   _  ___ _____   ____  _   _ ___ _     ____
 | | | |/ _ \_   _| | __ )| | | |_ _| |   |  _ \
 | |_| | | | || |   |  _ \| | | || || |   | | | |
