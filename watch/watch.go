@@ -38,7 +38,7 @@ func Start() {
 		}
 		// 重新编译运行之前退出之前的进程
 		if currentPid > 0 {
-			css.New().StyleBold().BgRed().Printf(lineFormat, fmt.Sprintf("< GracefulStop running on pid=", currentPid, " >"))
+			css.New().StyleBold().BgRed().Printf(lineFormat, fmt.Sprintf("< GracefulStop running on pid=%v >", currentPid))
 			proc, err := os.FindProcess(currentPid)
 			if err != nil {
 				log.Printf("find old proc failed: %v", err)
