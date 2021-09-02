@@ -1,0 +1,10 @@
+language: go
+os:
+- linux
+- osx
+- windows
+branches:
+- master
+script:
+  - go build -v ./...
+  - go test -v ./...
