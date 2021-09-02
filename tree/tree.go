@@ -26,7 +26,7 @@ func TreeDirs(dir string, dirList *[]string, excludeDir []string) error {
 	}
 
 	for _, sub := range d {
-		if sub.IsDir() && !strslice.IsStrInSlice(sub.Name(), excludeDir) {
+		if sub.IsDir() && !strslice.IsInStringSlices(sub.Name(), excludeDir) {
 			*dirList = append(*dirList, path.Join(dir, sub.Name()))
 			TreeDirs(path.Join(dir, sub.Name()), dirList, excludeDir)
 		}
