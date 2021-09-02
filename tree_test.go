@@ -14,5 +14,4 @@ func Test_Tree(t *testing.T) {
 	if err != nil {
 		t.Errorf("test tree failed: %v", err)
 	}
-
 }

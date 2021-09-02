@@ -12,8 +12,7 @@
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/flylog/colorstyle"
 	"github.com/spf13/cobra"
 	"github.com/wandercn/hotbuild/version"
 	"github.com/wandercn/hotbuild/watch"
@@ -28,11 +27,11 @@ var runCmd = &cobra.Command{
 }
 
 func run() {
-	fmt.Println(watch.Green, `
+	colorstyle.New().ColorGreen().Println(`
  _   _  ___ _____   ____  _   _ ___ _     ____
 | | | |/ _ \_   _| | __ )| | | |_ _| |   |  _ \
 | |_| | | | || |   |  _ \| | | || || |   | | | |
 |  _  | |_| || |   | |_) | |_| || || |___| |_| |
-|_| |_|\___/ |_|   |____/ \___/|___|_____|____/ `, version.Version, `built with Go`, version.GoVersion, watch.Reset)
+|_| |_|\___/ |_|   |____/ \___/|___|_____|____/ `, version.Version, ` built with `, version.GoVersion)
 	watch.Start()
 }
