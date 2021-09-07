@@ -1,4 +1,13 @@
-# hotbuild
+# [hotbuild](hotbuild.ffactory.org)
+
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wandercn/hotbuild?color=peru)](https://github.com/wandercn/hotbuild/releases/latest)
+[![Released API docs](https://img.shields.io/badge/godoc-reference-blue)](github.com/wandercn/hotbuild)
+[![Build](https://img.shields.io/github/workflow/status/wandercn/hotbuild/Go.svg)](#)
+[![Go Report Card](https://goreportcard.com/badge/github.com/wandercn/hotbuild?color=pink)](https://goreportcard.com/report/github.com/wandercn/hotbuild)
+[![Lines of code](https://img.shields.io/tokei/lines/github/wandercn/hotbuild.svg?color=beige)](#)
+[![Downloads of releases](https://img.shields.io/github/downloads/wandercn/hotbuild/total.svg?color=lavender)](https://github.com/wandercn/hotbuild/releases/latest)
+[![Languages](https://img.shields.io/github/languages/top/wandercn/hotbuild.svg?color=yellow)](#)
+[![GitHub go.mod Go version (subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/wandercn/hotbuild)](#)
 
 A cross platform hot compilation tool
 
