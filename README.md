@@ -95,7 +95,5 @@ wander$ launchctl limit
 	maxfiles    4096           10240
 
   ```
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fwandercn%2Fhotbuild?ref=badge_large)
-
+remind:
+> Some terminal modifications cannot take effect immediately and need to be restarted, such as iterm2.
