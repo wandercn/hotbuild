@@ -63,7 +63,7 @@ func Run() (pid int, err error) {
 	c := config.New()
 	runCmd, err := c.GetRunCmd()
 	if err != nil {
-		return -1, fmt.Errorf("GetBuildCmd ailed: %v", err)
+		return -1, fmt.Errorf("GetRunCmd failed: %v", err)
 	}
 	goPath := os.ExpandEnv("$GOPATH")
 	runCmd = strings.ReplaceAll(runCmd, "$GOPATH", goPath)
