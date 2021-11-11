@@ -1,4 +1,4 @@
-# [hotbuild](hotbuild.ffactory.org)
+# [hotbuild](https://hotbuild.ffactory.org)
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wandercn/hotbuild?color=peru)](https://github.com/wandercn/hotbuild/releases/latest)
 [![Released API docs](https://img.shields.io/badge/go-reference-blue?logo=go&logoColor=white)](github.com/wandercn/hotbuild)
