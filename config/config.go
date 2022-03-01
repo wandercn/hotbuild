@@ -15,6 +15,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
+	"path/filepath"
 
 	"github.com/spf13/viper"
 )
@@ -33,8 +35,11 @@ type buildConfig struct {
 
 /* 初始化默认配置 */
 func InitConf() error {
-	configFile := ConfFileName + ".toml"
-	_, err := os.Lstat(configFile)
+	configFile, err := filepath.Abs(ConfFileName + ".toml")
+	if err != nil {
+		log.Println("get configfile abs path failed:%v", err)
+	}
+	_, err = os.Lstat(configFile)
 	if err != nil {
 		if os.IsNotExist(err) {
 			log.Println("create config file:", ConfFileName+".toml")
@@ -48,8 +53,9 @@ func InitConf() error {
 	base.AddConfigPath(".")
 	base.SetConfigName(ConfFileName)
 	base.SetConfigType("toml")
-	base.Set("buildCmd", "go build -o ./tmp_bin")
-	base.Set("runCmd", "./tmp_bin")
+	tmpPath := path.Dir("./")
+	base.Set("buildCmd", "go build -o "+tmpPath+"tmp_bin")
+	base.Set("runCmd", tmpPath+"mp_bin")
 	pwd, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("Getwd faied: %v", err)
