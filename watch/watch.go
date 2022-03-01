@@ -45,11 +45,11 @@ func Start() {
 				log.Printf("find old proc failed: %v", err)
 			} else {
 				if runtime.GOOS == "windows" {
-					err = proc.Kill() //windows不支持Signal信号只能Kill
-					if err != nil {
+					go proc.Kill() //windows不支持Signal信号只能Kill
+					/* if err != nil {
 						os.Exit(1)
 						panic(err)
-					}
+					} */
 
 				} else {
 					err := proc.Signal(os.Interrupt)
