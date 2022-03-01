@@ -37,7 +37,7 @@ type buildConfig struct {
 func InitConf() error {
 	configFile, err := filepath.Abs(ConfFileName + ".toml")
 	if err != nil {
-		log.Println("get configfile abs path failed:%v", err)
+		log.Printf("get configfile abs path failed:%v", err)
 	}
 	_, err = os.Lstat(configFile)
 	if err != nil {
