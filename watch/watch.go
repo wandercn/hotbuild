@@ -16,6 +16,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"runtime"
 
 	css "github.com/flylog/colorstyle"
 	"github.com/fsnotify/fsnotify"
@@ -43,14 +44,23 @@ func Start() {
 			if err != nil {
 				log.Printf("find old proc failed: %v", err)
 			} else {
-				err := proc.Signal(os.Interrupt)
-				if err != nil {
-					log.Printf("Signal error: %v", err)
-					log.Printf("gracefulStop doing kill")
-					err = proc.Signal(os.Kill)
+				if runtime.GOOS == "windows" {
+					err = proc.Kill() //windows不支持Signal信号只能Kill
 					if err != nil {
 						os.Exit(1)
 						panic(err)
+					}
+
+				} else {
+					err := proc.Signal(os.Interrupt)
+					if err != nil {
+						log.Printf("Signal error: %v", err)
+						log.Printf("gracefulStop doing kill")
+						err = proc.Signal(os.Kill)
+						if err != nil {
+							os.Exit(1)
+							panic(err)
+						}
 					}
 				}
 			}

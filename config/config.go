@@ -17,6 +17,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"runtime"
 
 	"github.com/spf13/viper"
 )
@@ -54,8 +55,12 @@ func InitConf() error {
 	base.SetConfigName(ConfFileName)
 	base.SetConfigType("toml")
 	tmpPath := path.Dir("./")
-	base.Set("buildCmd", "go build -o "+tmpPath+"tmp_bin")
-	base.Set("runCmd", tmpPath+"mp_bin")
+	tmpBin := "tmp_bin"
+	if runtime.GOOS == "windows" {
+		tmpBin = "tmp_bin.exe"
+	}
+	base.Set("buildCmd", "go build -o "+tmpPath+tmpBin)
+	base.Set("runCmd", tmpPath+tmpBin)
 	pwd, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("Getwd faied: %v", err)
