@@ -54,7 +54,7 @@ func InitConf() error {
 	base.AddConfigPath(".")
 	base.SetConfigName(ConfFileName)
 	base.SetConfigType("toml")
-	tmpPath := path.Dir("./")
+	tmpPath := path.Dir("tmp/")
 	tmpBin := "tmp_bin"
 	if runtime.GOOS == "windows" {
 		tmpBin = "tmp_bin.exe"
