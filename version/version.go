@@ -11,5 +11,5 @@
 */
 package version
 
-const GoVersion = "go1.16.14"
+const GoVersion = "go1.17.8"
 const Version = "v1.0.8"

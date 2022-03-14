@@ -50,10 +50,17 @@ GO_ENABLED=0 GOOS=linux GOARCH=riscv64 go build -ldflags="-X 'version.Version=$l
 cd $release/
 zip -mr $target.zip $target
 cd ..
-# macosx
+# macosx amd64
 GO_ENABLED=0 GOOS=darwin GOARCH=amd64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
 GO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/
+cd $release/
+zip -mr $target.zip $target
+cd ..
+# macosx arm64
+GO_ENABLED=0 GOOS=darwin GOARCH=arm64
+target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
+GO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/
 cd $release/
 zip -mr $target.zip $target
 cd ..
