@@ -43,6 +43,13 @@ GO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-X 'version.Version=$las
 cd $release/
 zip -mr $target.zip $target
 cd ..
+# Linux loong64
+GO_ENABLED=0 GOOS=linux GOARCH=loong64
+target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
+GO_ENABLED=0 GOOS=linux GOARCH=loong64 go build -ldflags="-X 'version.Version=$lastTag'" -o ./$release/$target/
+cd $release/
+zip -mr $target.zip $target
+cd ..
 # Linux riscv64
 GO_ENABLED=0 GOOS=linux GOARCH=riscv64
 target="hotbuild_${lastTag}_${GOOS}_${GOARCH}"
