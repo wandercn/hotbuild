@@ -2,7 +2,7 @@
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/wandercn/hotbuild?color=peru)](https://github.com/wandercn/hotbuild/releases/latest)
 [![Released API docs](https://img.shields.io/badge/go-reference-blue?logo=go&logoColor=white)](github.com/wandercn/hotbuild)
-[![Build](https://img.shields.io/github/workflow/status/wandercn/hotbuild/Go.svg)](#)
+[![Build](https://img.shields.io/github/actions/workflow/status/wandercn/hotbuild/.github/workflows/go.yml?branch=master)](#)
 [![Go Report Card](https://goreportcard.com/badge/github.com/wandercn/hotbuild?color=pink)](https://goreportcard.com/report/github.com/wandercn/hotbuild)
 [![Lines of code](https://img.shields.io/tokei/lines/github/wandercn/hotbuild.svg?color=beige)](#)
 [![Downloads of releases](https://img.shields.io/github/downloads/wandercn/hotbuild/total.svg?color=lavender)](https://github.com/wandercn/hotbuild/releases/latest)
