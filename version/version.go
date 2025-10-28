@@ -12,4 +12,4 @@
 package version
 
 const GoVersion = "go1.19.1"
-const Version = "v1.0.8"
+const Version = "v1.0.9"
